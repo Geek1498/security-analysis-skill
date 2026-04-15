@@ -65,7 +65,7 @@ After installing, restart your editor or agent, then ask:
 
 GitHub Copilot users can also use the slash command: `/security-analysis-skill`
 
-The skill produces a structured checklist report with ✅ PASS, ❌ FAIL, ⚠️ PARTIAL, or ➖ N/A for each check.
+The skill produces a structured checklist report with  PASS,  FAIL,  PARTIAL, or ➖ N/A for each check.
 
 ## What It Checks
 
