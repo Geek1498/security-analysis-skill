@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Copilot skill for comprehensive security audits (OWASP Top 10, Laravel, Next.js, ASP.NET, React, GraphQL)",
   "bin": {
-    "security-analysis-skill": "./bin/install.js"
+    "security-analysis-skill": "bin/install.js"
   },
   "files": [
     "bin/",
