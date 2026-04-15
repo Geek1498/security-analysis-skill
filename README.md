@@ -1,12 +1,27 @@
 # security-analysis-skill
 
-A [GitHub Copilot skill](https://code.visualstudio.com/docs/copilot/customization/agent-skills) that performs comprehensive security audits of your codebase.
+A security audit skill for **11 AI coding agents**. Performs a comprehensive, evidence-based security audit of your codebase following the OWASP Top 10 (2021) with framework-specific checks for **Laravel**, **Next.js**, **ASP.NET Core C#**, **React**, and **GraphQL**.
 
-Covers the **OWASP Top 10 (2021)** with framework-specific checks for **Laravel**, **Next.js**, **ASP.NET Core C#**, **React**, and **GraphQL**.
+## Supported Agents
+
+| Agent | Scope | Instruction file |
+|---|---|---|
+| GitHub Copilot | User | `~/.agents/skills/security-analysis-skill/` |
+| Claude Code | User | `~/.claude/CLAUDE.md` |
+| Codex CLI | User | `~/.codex/instructions.md` |
+| Cursor | User | `~/.cursor/rules/security-analysis-skill.mdc` |
+| Gemini CLI | User | `~/.gemini/GEMINI.md` |
+| Zed | Project (cwd) | `.rules` |
+| Windsurf | Project (cwd) | `.windsurfrules` |
+| Cline | Project (cwd) | `.clinerules` |
+| Aider | Project (cwd) | `CONVENTIONS.md` |
+| Continue.dev | Project (cwd) | `.continuerules` |
+| Amazon Q Developer | Project (cwd) | `.amazonq/rules/security-analysis.md` |
+
+**User-scoped** agents are configured once and active in every project.  
+**Project-scoped** agents are configured per-project — run the install command inside the project you want to audit.
 
 ## Install
-
-Run one of these in your terminal — no global install needed:
 
 ```bash
 npx security-analysis-skill
@@ -16,21 +31,41 @@ npx security-analysis-skill
 pnpm dlx security-analysis-skill
 ```
 
-This copies the skill to `~/.agents/skills/security-analysis-skill/`, making it available in all your workspaces.
+Installs for **all 10 agents** by default. Target specific agents with `--agent=`:
+
+```bash
+# Single agent
+npx security-analysis-skill --agent=copilot
+
+# Multiple agents
+npx security-analysis-skill --agent=claude,cursor,codex
+
+# Only user-level agents (global, all projects)
+npx security-analysis-skill --agent=user
+
+# Only project-level agents (run inside your project directory)
+npx security-analysis-skill --agent=project
+```
 
 ## Uninstall
 
 ```bash
+# All agents
 npx security-analysis-skill --uninstall
+
+# Specific agents
+npx security-analysis-skill --uninstall --agent=cursor,claude
 ```
 
 ## Usage
 
-After installing, restart VS Code (or reload the Copilot Chat window), then:
+After installing, restart your editor or agent, then ask:
 
-1. Open a project you want to audit.
-2. In Copilot Chat, type `/security-analysis-skill` or ask something like *"audit my code for security issues"*.
-3. The skill produces a structured checklist report with ✅ PASS, ❌ FAIL, ⚠️ PARTIAL, or ➖ N/A for each check.
+> *"audit my code for security issues"*
+
+GitHub Copilot users can also use the slash command: `/security-analysis-skill`
+
+The skill produces a structured checklist report with ✅ PASS, ❌ FAIL, ⚠️ PARTIAL, or ➖ N/A for each check.
 
 ## What It Checks
 
